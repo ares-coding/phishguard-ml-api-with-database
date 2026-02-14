@@ -3,6 +3,7 @@ PhishGuard Flask API with Database Integration
 Complete backend with ML inference and persistent storage
 """
 
+from sqlalchemy import text
 import os
 import time
 import hashlib
@@ -13,6 +14,8 @@ from models import db, ScanHistory, UserStatistics, ModelMetrics
 import pickle
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
+
+
 
 # Flask application setup
 app = Flask(__name__)
@@ -142,13 +145,11 @@ def update_user_statistics(user_id, is_phishing, risk_score):
 def health_check():
     """Health check endpoint for monitoring"""
     try:
-        # Check database connectivity
-        from sqlalchemy import text
-db.session.execute(text('SELECT 1'))
+        from sqlalchemy import text 
         db_status = "connected"
     except Exception as e:
         db_status = f"error: {str(e)}"
-    
+
     return jsonify({
         'status': 'healthy',
         'model_loaded': ml_model is not None,
@@ -156,6 +157,7 @@ db.session.execute(text('SELECT 1'))
         'database': db_status,
         'timestamp': datetime.utcnow().isoformat()
     }), 200
+
 
 
 @app.route('/api/scan', methods=['POST'])
