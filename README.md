@@ -468,7 +468,7 @@ CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
 
 ## 📝 License
 
-MIT License - see LICENSE file for details
+Apache-2.0 license - see LICENSE file for details
 
 ## 🤝 Contributing
 
@@ -476,4 +476,6 @@ Contributions welcome! Please submit pull requests or open issues for bugs/featu
 
 ---
 
-**Built with ❤️ for secure communication**
+**Built with Passion and a lot of Coffee, for secure communication**
+
+Author: Ares Coding 
